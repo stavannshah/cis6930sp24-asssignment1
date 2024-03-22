@@ -40,12 +40,44 @@ Sensitive information is frequently included in documents such as police reports
    - `os`: Used for interacting with the operating system, such as file operations.
    - `assignment1.main`: Imports the functions defined in the `main.py` file of an `assignment1` module.
 
-- **Functions:**
-   - `main(args)`: The main function orchestrates the entire censoring process. It reads input files, censors sensitive information based on specified options, writes the censored files, and generates statistics.
-   - `write_censored_file(input_file, output_dir, censored_text)`: Writes the censored text to an output file.
-   - `write_to_files_stats(raw_file, stats)`: Writes the censoring statistics to a file.
-   - `censor_stats(args, censor_counts, censor_list)`: Generates statistics about the censoring process.
-   
+## Functions Summary
+
+### `process_files(args)`
+- Input: `args` (parsed command-line arguments)
+- Output: List of raw file paths
+- Description: Expands file globs in the input paths and returns a list of raw file paths.
+
+### `censor_data(raw_file, data, censor_functions)`
+- Inputs:
+  - `raw_file`: Path to the raw file
+  - `data`: Contents of the raw file
+  - `censor_functions`: List of censoring functions
+- Outputs: 
+  - Censored data
+  - Censor counts
+  - Censor lists
+- Description: Applies censoring functions to the provided data, tracks censor counts, and generates censor lists.
+
+### `write_to_file(output_path, data)`
+- Inputs:
+  - `output_path`: Path to the output file
+  - `data`: Data to write to the file
+- Description: Writes the provided data to a file specified by the output path.
+
+### `censor_stats(args, censor_counts, censor_list)`
+- Inputs:
+  - `args`: Parsed command-line arguments
+  - `censor_counts`: Dictionary containing censor counts
+  - `censor_list`: Dictionary containing censor lists
+- Output: Formatted string containing censoring statistics
+- Description: Generates statistics based on the censoring process, including the number of items censored for each specified type of data.
+
+### `main(args)`
+- Input: `args` (parsed command-line arguments)
+- Description: 
+  - Defines censor functions to apply to the data.
+  - Iterates through each input file, reads the file, applies censoring functions, and writes the censored data.
+  - Gathers censoring statistics and writes them to standard output/error or specified statistics file. 
 - **Censoring Functions:**
    - `censor_dates(data)`, `censor_phones(data)`, `censor_address(data)`, and `censor_names_snorkel(data)`: These functions individually censor dates, phone numbers, addresses, and names from the input text. They utilize different techniques, such as regular expressions, NER, and weak supervision with Snorkel, to identify and censor sensitive information.
          
