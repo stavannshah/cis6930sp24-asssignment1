@@ -1,5 +1,5 @@
 import unittest
-from censoror import censor_address
+from censoror import censor_addresses
 
 class TestAddressCensoring(unittest.TestCase):
     def test_address_censoring(self):
