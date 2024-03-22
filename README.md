@@ -78,17 +78,17 @@ Sensitive information is frequently included in documents such as police reports
   - Defines censor functions to apply to the data.
   - Iterates through each input file, reads the file, applies censoring functions, and writes the censored data.
   - Gathers censoring statistics and writes them to standard output/error or specified statistics file. 
-- **Censoring Functions:**
+**Censoring Functions:**
    - `censor_dates(data)`, `censor_phones(data)`, `censor_address(data)`, and `censor_names_snorkel(data)`: These functions individually censor dates, phone numbers, addresses, and names from the input text. They utilize different techniques, such as regular expressions, NER, and weak supervision with Snorkel, to identify and censor sensitive information.
          
-      ## censor_names(text)
+### censor_names(text)
 - **Description**: Censors names (entities labeled as 'PERSON' or 'GPE') in the provided text.
 - **Dependencies**:
   - `nltk`: Natural Language Toolkit
 - **Returns**: 
   - Censored text with replaced names (Unicode block character), list of censored names.
 
-## censor_dates(text)
+### censor_dates(text)
 - **Description**: Censors dates mentioned in the provided text.
 - **Dependencies**:
   - `spacy`: For named entity recognition (NER)
@@ -96,28 +96,28 @@ Sensitive information is frequently included in documents such as police reports
 - **Returns**: 
   - Censored text with replaced dates (Unicode block character), list of censored dates.
 
-## censor_phones(text)
+### censor_phones(text)
 - **Description**: Censors phone numbers mentioned in the provided text.
 - **Dependencies**:
   - `commonregex`: For phone number extraction
 - **Returns**: 
   - Censored text with replaced phone numbers (Unicode block character), list of censored phone numbers.
 
-## censor_genders(text)
+### censor_genders(text)
 - **Description**: Censors gender-related terms mentioned in the provided text.
 - **Dependencies**:
   - `nltk`: Natural Language Toolkit
 - **Returns**: 
   - Censored text with replaced gender terms (Unicode block character), list of censored gender terms.
 
-## censor_addresses(text)
+### censor_addresses(text)
 - **Description**: Censors addresses mentioned in the provided text.
 - **Dependencies**:
   - `pyap`: Python Address Parser
 - **Returns**: 
   - Censored text with replaced addresses (Unicode block character), list of censored addresses.
 
-## censor_concepts(text, concepts)
+### censor_concepts(text, concepts)
 - **Description**: Censors sentences containing specified concepts in the provided text.
 - **Dependencies**:
   - `nltk`: Natural Language Toolkit
@@ -129,10 +129,10 @@ Sensitive information is frequently included in documents such as police reports
    Users can run the script from the command line by specifying input files, types of information to censor, output formats, and where to print statistics.
 
 
-## Output
-- [Video Output](https://drive.google.com/file/d/1j9iyU4fUAfKgeKfpaBxFv0A6T9k7wXXb/view?usp=sharing)
+### Output
+- [Video Output](https://drive.google.com/drive/u/0/folders/1DRVznn_oRCXWsUMo9vDfUhNH_6PlbE6X)
 
-## Author 
+### Author 
   - Stavan Shah
   - Email: stavannikhi.shah@ufl.edu
   - UFID: 76557015
