@@ -81,11 +81,50 @@ Sensitive information is frequently included in documents such as police reports
 - **Censoring Functions:**
    - `censor_dates(data)`, `censor_phones(data)`, `censor_address(data)`, and `censor_names_snorkel(data)`: These functions individually censor dates, phone numbers, addresses, and names from the input text. They utilize different techniques, such as regular expressions, NER, and weak supervision with Snorkel, to identify and censor sensitive information.
          
-      - `censor_dates(data):`This method uses regular expression matching and named entity recognition (NER) with spaCy to identify and censor dates in the input text. It gives back a list of detected dates together with the suppressed content.
-      - `censor_phones(data):`Using the CommonRegex library, this function finds and filters phone numbers found in the input text. The redacted text and a list of phone numbers that were found are returned.
-      - `censor_address(data):`This method uses the pyap package for address parsing to identify and suppress addresses in the supplied text. The censored text and a list of addresses that were found are returned.
-      - `censor_names_snorkel(data):`This method uses the weak supervision library Snorkel to fine-tune the identification of possible names in the input text by looking for patterns like titles coming before capitalized terms. The suppressed text and a list of names that were found are returned.
+      ## censor_names(text)
+- **Description**: Censors names (entities labeled as 'PERSON' or 'GPE') in the provided text.
+- **Dependencies**:
+  - `nltk`: Natural Language Toolkit
+- **Returns**: 
+  - Censored text with replaced names (Unicode block character), list of censored names.
 
+## censor_dates(text)
+- **Description**: Censors dates mentioned in the provided text.
+- **Dependencies**:
+  - `spacy`: For named entity recognition (NER)
+  - `re`: Regular expression module
+- **Returns**: 
+  - Censored text with replaced dates (Unicode block character), list of censored dates.
+
+## censor_phones(text)
+- **Description**: Censors phone numbers mentioned in the provided text.
+- **Dependencies**:
+  - `commonregex`: For phone number extraction
+- **Returns**: 
+  - Censored text with replaced phone numbers (Unicode block character), list of censored phone numbers.
+
+## censor_genders(text)
+- **Description**: Censors gender-related terms mentioned in the provided text.
+- **Dependencies**:
+  - `nltk`: Natural Language Toolkit
+- **Returns**: 
+  - Censored text with replaced gender terms (Unicode block character), list of censored gender terms.
+
+## censor_addresses(text)
+- **Description**: Censors addresses mentioned in the provided text.
+- **Dependencies**:
+  - `pyap`: Python Address Parser
+- **Returns**: 
+  - Censored text with replaced addresses (Unicode block character), list of censored addresses.
+
+## censor_concepts(text, concepts)
+- **Description**: Censors sentences containing specified concepts in the provided text.
+- **Dependencies**:
+  - `nltk`: Natural Language Toolkit
+- **Parameters**:
+  - `concepts`: List of concepts to be censored.
+- **Returns**: 
+  - Censored text with replaced sentences (Unicode block character), list of censored sentences.
 - **Execution from Command Line**:
    Users can run the script from the command line by specifying input files, types of information to censor, output formats, and where to print statistics.
 
